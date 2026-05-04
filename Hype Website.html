@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hype — Distribución de canales en Latinoamérica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08091A;
+    --bg-2:#0A0B22;
+    --primary:#1A35C4;
+    --primary-deep:#0D1F7A;
+    --magenta:#C9A24A;
+    --purple:#8A6C2A;
+    --gold:#C9A24A;
+    --gold-deep:#8A6C2A;
+    --card:#0F1535;
+    --card-2:#11163a;
+    --line:rgba(138,156,197,0.18);
+    --text:#FFFFFF;
+    --muted:#8A9CC5;
+    --yellow:#F5C518;
+    --orange:#F47C2A;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:'Bebas Neue', sans-serif; font-weight:400; letter-spacing:0.01em; margin:0; line-height:0.95}
+  .display{font-family:'Bebas Neue', sans-serif; font-weight:400}
+
+  /* Film grain overlay */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:200; opacity:0.06; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1   0 0 0 0 1   0 0 0 0 1   0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* TOP BAR */
+  .topbar{
+    background:linear-gradient(90deg, var(--primary-deep), var(--primary) 50%, var(--gold-deep));
+    color:#fff; font-size:13px; letter-spacing:0.04em;
+    padding:9px 24px; text-align:center; position:relative; z-index:5;
+  }
+  .topbar b{font-weight:600}
+  .topbar .pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:8px;vertical-align:middle;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(8,9,26,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1320px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; gap:32px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px; font-family:'Bebas Neue';
+    font-size:34px; letter-spacing:0.02em; line-height:1; color:#fff;
+  }
+  .logo-mark{
+    position:relative; width:38px; height:38px; border-radius:9px;
+    background:var(--primary); display:inline-flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.06), 0 8px 24px rgba(26,53,196,0.5);
+  }
+  .logo-mark::before{
+    content:""; width:0; height:0;
+    border-left:11px solid #fff; border-top:7px solid transparent; border-bottom:7px solid transparent;
+    margin-left:3px;
+  }
+  .nav-links{
+    display:flex; gap:34px; margin-left:40px;
+    font-size:14px; font-weight:500; color:#cbd3e8;
+  }
+  .nav-links a{position:relative; padding:6px 0; transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-links a.active{color:#fff}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--magenta);border-radius:2px}
+  .nav-cta{margin-left:auto; display:flex; align-items:center; gap:14px}
+  .lang{font-size:12px; color:var(--muted); letter-spacing:0.14em; font-weight:600}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 22px; border-radius:999px; font-weight:600; font-size:14px;
+    border:none; cursor:pointer; transition:transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn-magenta{background:var(--gold); color:#1a1200; box-shadow:0 8px 30px rgba(201,162,74,0.30)}
+  .btn-magenta:hover{transform:translateY(-1px); box-shadow:0 14px 40px rgba(201,162,74,0.45)}
+  .btn-blue{background:var(--primary); color:#fff; box-shadow:0 8px 30px rgba(26,53,196,0.45)}
+  .btn-blue:hover{transform:translateY(-1px); box-shadow:0 14px 40px rgba(26,53,196,0.6)}
+  .btn-ghost{background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.18)}
+  .btn-ghost:hover{background:rgba(255,255,255,0.06)}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:80px 32px 120px;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(900px 500px at 12% 30%, rgba(26,53,196,0.35), transparent 60%),
+      radial-gradient(700px 500px at 90% 80%, rgba(201,162,74,0.18), transparent 60%),
+      radial-gradient(500px 400px at 60% 10%, rgba(26,53,196,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative; max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns: 1.1fr 0.9fr 1.5fr; gap:28px; align-items:start;
+  }
+  .frame{ border-radius:14px; overflow:hidden; position:relative; }
+  .frame .label{
+    position:absolute; left:14px; top:14px;
+    font-family:'JetBrains Mono', monospace; font-size:10px;
+    letter-spacing:0.18em; color:rgba(255,255,255,0.7); text-transform:uppercase;
+    background:rgba(0,0,0,0.4); padding:5px 8px; border-radius:4px;
+    backdrop-filter:blur(4px);
+  }
+  .frame .ph-foot{
+    position:absolute; left:14px; bottom:14px; right:14px;
+    display:flex; justify-content:space-between; align-items:end;
+    font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.55);
+    letter-spacing:0.1em;
+  }
+  /* SVG striped placeholders sit inside */
+  .ph{ width:100%; height:100%; display:block }
+
+  .col-tall{ height:640px }
+  .col-stack{ display:flex; flex-direction:column; gap:22px }
+  .col-stack .frame.s1{ height:300px }
+  .col-stack .frame.s2{ height:200px }
+  .badge-shape{
+    height:118px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--gold), var(--gold-deep));
+    position:relative; overflow:hidden;
+    box-shadow:0 16px 40px rgba(201,162,74,0.25);
+  }
+  .badge-shape svg{ width:54px; height:54px; opacity:.92}
+
+  .hero-text{ padding:14px 0 0 16px; max-width:560px }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:13px; letter-spacing:0.18em; color:var(--muted);
+    text-transform:uppercase; font-weight:600; margin-bottom:24px;
+  }
+  .eyebrow .play{
+    width:28px; height:28px; border-radius:50%;
+    background:var(--primary); display:inline-flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 6px rgba(26,53,196,0.18);
+  }
+  .eyebrow .play::before{
+    content:""; width:0; height:0;
+    border-left:7px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent;
+    margin-left:2px;
+  }
+  h1.headline{
+    font-size:96px; line-height:0.92; letter-spacing:0.005em;
+    margin:0 0 22px; text-transform:uppercase;
+  }
+  h1.headline .accent{
+    background:linear-gradient(90deg, var(--gold), #e6c97a 50%, #5d7bff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lede{ color:#cdd5ee; font-size:17px; line-height:1.65; max-width:480px; margin:0 0 36px }
+  .hero-actions{ display:flex; align-items:center; gap:22px; margin-bottom:54px }
+  .ghost-link{ color:#fff; font-size:14px; font-weight:600; display:inline-flex; align-items:center; gap:10px; opacity:.85 }
+  .ghost-link:hover{opacity:1}
+  .ghost-link .arrow{
+    width:34px; height:34px; border:1px solid rgba(255,255,255,0.25); border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center; font-size:14px;
+    transition:background .2s;
+  }
+  .ghost-link:hover .arrow{background:rgba(255,255,255,0.08)}
+
+  .hero-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:520px; border-top:1px solid var(--line); padding-top:28px }
+  .stat .num{ font-family:'Bebas Neue'; font-size:42px; line-height:1; letter-spacing:0.02em }
+  .stat .num .pct{ color:var(--magenta) }
+  .stat .lbl{ font-size:11px; color:var(--muted); letter-spacing:0.16em; text-transform:uppercase; margin-top:6px }
+
+  /* floating play button */
+  .float-play{
+    position:absolute; left:54%; top:60%; width:80px; height:80px; border-radius:50%;
+    background:var(--primary); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 20px 60px rgba(26,53,196,0.6), 0 0 0 8px rgba(26,53,196,0.18);
+    z-index:3; cursor:pointer;
+  }
+  .float-play::before{
+    content:""; width:0;height:0;border-left:18px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:4px;
+  }
+  .float-play .ring{
+    position:absolute; inset:-14px; border-radius:50%; border:1px dashed rgba(255,255,255,0.35);
+    animation:spin 18s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Channels strip header */
+  .strip{
+    margin-top:0; padding:18px 32px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:linear-gradient(90deg, transparent, rgba(26,53,196,0.10), transparent);
+    overflow:hidden;
+  }
+  .strip-inner{ max-width:1320px; margin:0 auto; display:flex; align-items:center; gap:48px; font-family:'Bebas Neue'; font-size:22px; letter-spacing:0.18em; color:#aab4d4 }
+  .strip-inner span.dot{ width:8px;height:8px;border-radius:50%; background:var(--magenta) }
+
+  /* CHANNELS SECTION */
+  .channels{
+    padding:120px 32px;
+    background:radial-gradient(1200px 600px at 80% 0%, rgba(155,43,232,0.10), transparent 60%), var(--bg);
+    position:relative;
+  }
+  .section-head{ max-width:1320px; margin:0 auto 60px; display:flex; align-items:end; justify-content:space-between; gap:40px; flex-wrap:wrap }
+  .section-eyebrow{ font-size:12px; letter-spacing:0.22em; color:var(--magenta); text-transform:uppercase; font-weight:700; display:flex; align-items:center; gap:12px }
+  .section-eyebrow::before{content:"";width:34px;height:1px;background:var(--magenta)}
+  .section-title{ font-family:'Bebas Neue'; font-size:84px; line-height:0.95; max-width:780px; margin-top:14px; text-transform:uppercase }
+  .section-title em{ font-style:normal; color:var(--muted); font-family:'Caveat', cursive; font-size:0.7em; letter-spacing:0; text-transform:none }
+  .section-sub{ color:var(--muted); max-width:380px; font-size:15px; line-height:1.7 }
+
+  .channel-grid{ max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:24px }
+  .channel{
+    position:relative; height:540px; border-radius:18px; overflow:hidden;
+    border:1px solid var(--line);
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    isolation:isolate;
+  }
+  .channel:hover{ transform:translateY(-6px) scale(1.01); border-color:rgba(255,255,255,0.25) }
+  .channel .bg{ position:absolute; inset:0; z-index:0 }
+  .channel .overlay{ position:absolute; inset:0; z-index:1; pointer-events:none }
+  .channel .body{
+    position:absolute; inset:0; z-index:2; padding:32px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .channel.avi:hover{ box-shadow:0 30px 80px rgba(26,53,196,0.45), 0 0 0 1px rgba(56,108,255,0.5) }
+  .channel.rewind:hover{ box-shadow:0 30px 80px rgba(201,162,74,0.30), 0 0 0 1px rgba(201,162,74,0.45) }
+  .channel.kids:hover{ box-shadow:0 30px 80px rgba(201,162,74,0.30), 0 0 0 1px rgba(201,162,74,0.45) }
+
+  .ch-top{ display:flex; align-items:center; justify-content:space-between }
+  .ch-logo-pill{
+    background:#fff; color:var(--primary); border-radius:8px; padding:8px 14px;
+    font-family:'Bebas Neue'; font-size:26px; line-height:1; letter-spacing:0.02em;
+    display:inline-flex; align-items:center;
+  }
+  .ch-logo-pill img{ height:22px; display:block }
+  .rewind-logo{
+    font-family:'Caveat', cursive; font-weight:700; color:var(--gold);
+    font-size:42px; line-height:0.9;
+    text-shadow:0 0 30px rgba(201,162,74,0.35);
+  }
+  .rewind-logo .small{ display:block; font-family:'Bebas Neue'; font-size:18px; color:#fff; letter-spacing:0.1em; margin-bottom:-4px }
+  .kids-logo{
+    font-family:'Bebas Neue'; font-size:34px; line-height:0.9;
+    color:var(--gold);
+    letter-spacing:0.04em; text-transform:uppercase;
+    text-shadow:0 0 20px rgba(201,162,74,0.25);
+  }
+  .kids-logo .small{ display:block; font-size:14px; color:#fff; -webkit-text-fill-color:#fff; letter-spacing:0.16em; margin-bottom:2px }
+  .ch-num{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em;
+    color:rgba(255,255,255,0.7); text-transform:uppercase;
+  }
+  .ch-bottom{ display:flex; flex-direction:column; gap:14px }
+  .ch-tag{ font-family:'Bebas Neue'; font-size:36px; line-height:1; letter-spacing:0.01em; max-width:300px }
+  .ch-desc{ color:rgba(255,255,255,0.78); font-size:14px; line-height:1.6; max-width:340px }
+  .ch-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:8px }
+  .ch-tags{ display:flex; gap:8px; flex-wrap:wrap }
+  .ch-tags span{ font-size:11px; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.14); letter-spacing:0.12em; text-transform:uppercase }
+  .ch-cta{
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.2); transition:background .2s;
+  }
+  .channel:hover .ch-cta{ background:rgba(255,255,255,0.22) }
+  .ch-cta::before{ content:"→"; font-size:18px; color:#fff }
+
+  /* CONTACT */
+  .contact{
+    padding:140px 32px;
+    background:#000;
+    position:relative;
+    border-top:1px solid var(--line);
+  }
+  .contact::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(700px 400px at 18% 30%, rgba(26,53,196,0.20), transparent 60%),
+      radial-gradient(600px 400px at 85% 80%, rgba(201,162,74,0.12), transparent 60%);
+    pointer-events:none;
+  }
+  .contact-inner{
+    position:relative; max-width:1320px; margin:0 auto;
+    display:grid; grid-template-columns: 0.8fr 1.2fr; gap:80px;
+  }
+  .contact-left h2{ font-size:88px; line-height:0.95; text-transform:uppercase; max-width:520px }
+  .contact-left h2 span{ color:var(--magenta) }
+  .contact-left p{ color:var(--muted); font-size:16px; line-height:1.7; max-width:420px; margin:24px 0 36px }
+  .contact-meta{ display:flex; flex-direction:column; gap:18px; border-top:1px solid var(--line); padding-top:28px; max-width:380px }
+  .meta-row{ display:flex; align-items:center; gap:14px; font-size:14px; color:#cdd5ee }
+  .meta-row .ic{ width:32px; height:32px; border-radius:50%; background:rgba(26,53,196,0.18); display:flex; align-items:center; justify-content:center; color:#7d96ff }
+
+  .form-card{
+    background:linear-gradient(180deg, rgba(15,21,53,0.7), rgba(11,13,38,0.85));
+    border:1px solid var(--line);
+    border-radius:18px; padding:40px;
+    backdrop-filter:blur(8px);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px 28px }
+  .field{ display:flex; flex-direction:column; gap:8px; position:relative }
+  .field.full{ grid-column:1 / -1 }
+  .field label{ font-size:11px; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; font-weight:600 }
+  .field .input{
+    background:transparent; border:none; border-bottom:1px solid rgba(138,156,197,0.3);
+    color:#fff; font-size:16px; padding:10px 0 10px; outline:none;
+    font-family:inherit; transition:border-color .2s;
+  }
+  .field .input::placeholder{ color:rgba(255,255,255,0.35) }
+  .field .input:focus{ border-bottom-color:#3DCD5C; box-shadow:0 1px 0 0 #3DCD5C }
+  .field.icon .input{ padding-left:28px }
+  .field.icon .ic{ position:absolute; left:0; top:34px; color:var(--muted) }
+
+  .range-wrap{ display:flex; flex-direction:column; gap:10px; padding-top:6px }
+  .range-vals{ display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted); letter-spacing:0.08em }
+  .range-vals b{ color:#fff; font-weight:500 }
+  input[type=range]{
+    -webkit-appearance:none; appearance:none; width:100%; height:4px;
+    background:linear-gradient(90deg, var(--primary) 0%, var(--primary) 60%, rgba(138,156,197,0.2) 60%);
+    border-radius:999px; outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%;
+    background:#fff; border:3px solid var(--primary); cursor:pointer;
+    box-shadow:0 0 0 6px rgba(26,53,196,0.18);
+  }
+
+  .checks{ display:flex; flex-wrap:wrap; gap:14px 22px; margin-top:8px }
+  .check{ display:inline-flex; align-items:center; gap:10px; cursor:pointer; font-size:14px; color:#cdd5ee }
+  .check input{ display:none }
+  .check .box{ width:18px; height:18px; border-radius:5px; border:1.5px solid rgba(138,156,197,0.4); display:inline-flex; align-items:center; justify-content:center; transition:all .2s }
+  .check input:checked + .box{ background:var(--primary); border-color:var(--primary) }
+  .check input:checked + .box::after{ content:"✓"; color:#fff; font-size:12px; font-weight:700 }
+
+  .submit-row{ grid-column:1 / -1; display:flex; align-items:center; gap:18px; margin-top:18px }
+  .btn-submit{
+    flex:1; padding:18px 28px; border-radius:12px; border:none; cursor:pointer;
+    background:linear-gradient(90deg, var(--primary), #2a4ff5);
+    color:#fff; font-weight:600; font-size:15px; letter-spacing:0.04em;
+    box-shadow:0 14px 40px rgba(26,53,196,0.5);
+    display:inline-flex; align-items:center; justify-content:center; gap:12px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn-submit:hover{ transform:translateY(-2px); box-shadow:0 22px 60px rgba(26,53,196,0.6) }
+  .submit-note{ font-size:11px; color:var(--muted); letter-spacing:0.12em; max-width:160px; line-height:1.5; text-transform:uppercase }
+
+  /* FOOTER */
+  footer{ padding:60px 32px 40px; border-top:1px solid var(--line); background:#05061a }
+  .foot-inner{ max-width:1320px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap }
+  .foot-meta{ font-size:12px; color:var(--muted); letter-spacing:0.14em; text-transform:uppercase }
+  .foot-links{ display:flex; gap:28px; font-size:13px; color:#aab4d4 }
+  .foot-links a:hover{ color:#fff }
+
+  /* Floating particles */
+  .particles{ position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden }
+  .particles span{
+    position:absolute; width:3px; height:3px; border-radius:50%; background:#fff;
+    opacity:0.35; animation: float 12s linear infinite;
+  }
+  .particles span:nth-child(1){left:10%; top:20%; animation-delay:0s}
+  .particles span:nth-child(2){left:30%; top:80%; animation-delay:-3s; background:var(--magenta); opacity:.5}
+  .particles span:nth-child(3){left:65%; top:30%; animation-delay:-6s}
+  .particles span:nth-child(4){left:80%; top:60%; animation-delay:-9s; background:#7d96ff}
+  .particles span:nth-child(5){left:50%; top:50%; animation-delay:-2s}
+  .particles span:nth-child(6){left:20%; top:50%; animation-delay:-5s; background:var(--magenta)}
+  .particles span:nth-child(7){left:88%; top:15%; animation-delay:-8s}
+  .particles span:nth-child(8){left:42%; top:88%; animation-delay:-11s; background:#7d96ff}
+  @keyframes float{
+    0%{transform:translateY(0) translateX(0); opacity:0}
+    10%{opacity:.6}
+    90%{opacity:.6}
+    100%{transform:translateY(-80px) translateX(20px); opacity:0}
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px){
+    .hero-inner{ grid-template-columns: 1fr 1fr; }
+    .hero-text{ grid-column:1 / -1; padding-left:0 }
+    .col-tall{ height:480px }
+    h1.headline{ font-size:72px }
+    .channel-grid{ grid-template-columns:1fr 1fr }
+    .contact-inner{ grid-template-columns:1fr }
+    .section-title, .contact-left h2{ font-size:64px }
+  }
+  @media (max-width: 720px){
+    .nav-links{display:none}
+    .hero-inner{ grid-template-columns:1fr }
+    .col-tall{height:380px}
+    h1.headline{ font-size:54px }
+    .channel-grid{ grid-template-columns:1fr }
+    .form-grid{ grid-template-columns:1fr }
+    .section-title, .contact-left h2{ font-size:48px }
+    .nav-cta .lang{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span class="pulse"></span>
+  <b>HYPE LATAM</b> · Distribución premium de canales en toda Latinoamérica · <u>Solicita el catálogo 2026</u>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"></span>
+      <span>Hype</span>
+    </a>
+    <div class="nav-links">
+      <a href="#canales" class="active">Canales</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#distribucion">Distribución</a>
+      <a href="#prensa">Prensa</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <span class="lang">ES / EN / PT</span>
+      <a href="#contacto" class="btn btn-magenta">Contáctanos →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="particles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <!-- Left tall image -->
+    <div class="frame col-tall">
+      <span class="label">REEL · 01 / Cinematic montage</span>
+      <svg class="ph" viewBox="0 0 400 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0D1F7A"/>
+            <stop offset="0.5" stop-color="#1A35C4"/>
+            <stop offset="1" stop-color="#08091A"/>
+          </linearGradient>
+          <pattern id="stripes1" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="3" height="6" fill="rgba(255,255,255,0.04)"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="640" fill="url(#g1)"/>
+        <rect width="400" height="640" fill="url(#stripes1)"/>
+        <circle cx="200" cy="320" r="80" fill="rgba(255,255,255,0.05)"/>
+        <circle cx="200" cy="320" r="50" fill="rgba(255,255,255,0.08)"/>
+        <polygon points="186,302 186,338 218,320" fill="#fff" opacity="0.7"/>
+      </svg>
+      <div class="ph-foot"><span>// PLACEHOLDER</span><span>814 × 1178</span></div>
+    </div>
+
+    <!-- Middle column: stacked images + abstract badge -->
+    <div class="col-stack">
+      <div class="frame s1">
+        <span class="label">B-ROLL · 02</span>
+        <svg class="ph" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a2e10"/>
+              <stop offset="1" stop-color="#0D1F7A"/>
+            </linearGradient>
+            <pattern id="stripes2" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+              <rect width="4" height="8" fill="rgba(0,0,0,0.15)"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="300" fill="url(#g2)"/>
+          <rect width="400" height="300" fill="url(#stripes2)"/>
+        </svg>
+        <div class="ph-foot"><span>// WORKSTATION</span><span>16 : 9</span></div>
+      </div>
+      <div class="badge-shape">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 14 L50 14 L50 50 L14 50 Z" stroke="#fff" stroke-width="2" opacity=".4"/>
+          <polygon points="26,22 26,42 44,32" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Right text column -->
+    <div class="hero-text">
+      <div class="eyebrow">
+        <span class="play"></span>
+        Distribución de canales · Latinoamérica
+      </div>
+      <h1 class="headline">Llevamos<br/>el mejor<br/><span class="accent">entretenimiento</span><br/>a tu pantalla.</h1>
+      <p class="lede">Hype distribuye tres señales de televisión premium a operadores y plataformas en toda Latinoamérica. Cine, nostalgia y animación — empaquetados para audiencias que aún se sientan a ver TV.</p>
+      <div class="hero-actions">
+        <a href="#canales" class="btn btn-blue">Conoce nuestros canales →</a>
+        <a href="#" class="ghost-link">Ver nuestra presentación <span class="arrow">▶</span></a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="num">19<span class="pct">+</span></div>
+          <div class="lbl">Países en señal</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="lbl">Canales propios</div>
+        </div>
+        <div class="stat">
+          <div class="num">42<span class="pct">M</span></div>
+          <div class="lbl">Hogares mensuales</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-play"><span class="ring"></span></div>
+  </div>
+</section>
+
+<!-- Strip -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>HYPE LATAM</span><span class="dot"></span>
+    <span>SEÑALES HD &amp; 4K</span><span class="dot"></span>
+    <span>OPERADORES · IPTV · OTT</span><span class="dot"></span>
+    <span>2,400+ HORAS DE CONTENIDO</span><span class="dot"></span>
+    <span>DOBLAJE LATINO ORIGINAL</span>
+  </div>
+</div>
+
+<!-- CHANNELS -->
+<section class="channels" id="canales">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Nuestros canales</div>
+      <h2 class="section-title">Tres señales.<br/>Tres audiencias. <em>una sola promesa.</em></h2>
+    </div>
+    <p class="section-sub">Desarrollamos, programamos y distribuimos canales temáticos de cine y entretenimiento, optimizados para el consumo familiar latinoamericano. Cada señal es una marca con voz propia.</p>
+  </div>
+
+  <div class="channel-grid">
+    <!-- AVI -->
+    <article class="channel avi">
+      <div class="bg">
+        <svg class="ph" viewBox="0 0 480 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="aviBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0D1F7A"/>
+              <stop offset="0.6" stop-color="#1A35C4"/>
+              <stop offset="1" stop-color="#050721"/>
+            </linearGradient>
+            <pattern id="aviStripes" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="3" height="6" fill="rgba(255,255,255,0.05)"/>
+            </pattern>
+          </defs>
+          <rect width="480" height="540" fill="url(#aviBg)"/>
+          <rect width="480" height="540" fill="url(#aviStripes)"/>
+        </svg>
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(8,9,26,0.35) 0%, rgba(8,9,26,0.85) 70%, rgba(8,9,26,0.95) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <span class="ch-logo-pill" style="background:#fff;color:#1A35C4;font-family:'Bebas Neue';font-size:30px;letter-spacing:0.04em;padding:6px 16px;border-radius:6px;transform:skewX(-10deg);display:inline-block">avi</span>
+          <span class="ch-num">CH · 01</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">Tu pantalla,<br/>tu cine,<br/>tus estrenos.</h3>
+          <p class="ch-desc">Los mejores estrenos, los éxitos más recientes y el entretenimiento que atrapa a toda la familia, las 24 horas.</p>
+          <div class="ch-foot">
+            <div class="ch-tags"><span>Estrenos</span><span>Acción</span><span>Familia</span></div>
+            <a href="#" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- AVI REWIND -->
+    <article class="channel rewind">
+      <div class="bg">
+        <svg class="ph" viewBox="0 0 480 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="rewBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1a1408"/>
+              <stop offset="0.5" stop-color="#3d2f12"/>
+              <stop offset="1" stop-color="#0a0a14"/>
+            </linearGradient>
+            <pattern id="rewStripes" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)">
+              <rect width="4" height="8" fill="rgba(201,162,74,0.08)"/>
+            </pattern>
+          </defs>
+          <rect width="480" height="540" fill="url(#rewBg)"/>
+          <rect width="480" height="540" fill="url(#rewStripes)"/>
+        </svg>
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(20,5,25,0.30) 0%, rgba(20,5,25,0.85) 70%, rgba(15,5,20,0.95) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <div class="rewind-logo"><span class="small">avi</span>Rewind</div>
+          <span class="ch-num">CH · 02</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">El canal donde el cine<br/>nunca pierde emoción.</h3>
+          <p class="ch-desc">Grandes éxitos que siguen conquistando al público y títulos que siempre vale la pena revivir. Nostalgia en alta definición.</p>
+          <div class="ch-foot">
+            <div class="ch-tags"><span>Clásicos</span><span>Cult</span><span>Retro</span></div>
+            <a href="#" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- AVI KIDS -->
+    <article class="channel kids">
+      <div class="bg">
+        <svg class="ph" viewBox="0 0 480 540" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="kidsBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0d1545"/>
+              <stop offset="0.5" stop-color="#1A35C4"/>
+              <stop offset="1" stop-color="#080a22"/>
+            </linearGradient>
+            <pattern id="kidsStripes" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="5" height="10" fill="rgba(201,162,74,0.10)"/>
+            </pattern>
+          </defs>
+          <rect width="480" height="540" fill="url(#kidsBg)"/>
+          <rect width="480" height="540" fill="url(#kidsStripes)"/>
+        </svg>
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(20,5,5,0.30) 0%, rgba(15,5,5,0.85) 70%, rgba(10,5,5,0.95) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <div class="kids-logo"><span class="small">avi</span>Kids</div>
+          <span class="ch-num">CH · 03</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">El canal que hace soñar<br/>a los más pequeños.</h3>
+          <p class="ch-desc">Programación única de cine animado, diseñada para emocionar y divertir a los más pequeños de la casa, todos los días.</p>
+          <div class="ch-foot">
+            <div class="ch-tags"><span>Animación</span><span>Familiar</span><span>+6</span></div>
+            <a href="#" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-eyebrow" style="color:#7d96ff">— Hablemos</div>
+      <h2 style="margin-top:14px">Hablemos<br/>de tu <span>proyecto.</span></h2>
+      <p>Si eres operador, plataforma o anunciante interesado en distribuir nuestras señales, escríbenos. Respondemos en menos de 48 horas hábiles.</p>
+      <div class="contact-meta">
+        <div class="meta-row"><span class="ic">✉</span><span>contacto@hype.tv</span></div>
+        <div class="meta-row"><span class="ic">☎</span><span>+52 55 0000 0000 · LATAM</span></div>
+        <div class="meta-row"><span class="ic">◎</span><span>CDMX · Bogotá · Buenos Aires</span></div>
+      </div>
+    </div>
+
+    <form class="form-card" onsubmit="event.preventDefault(); alert('Demo — formulario enviado')">
+      <div class="form-grid">
+        <div class="field">
+          <label>Nombre</label>
+          <input class="input" type="text" placeholder="Ana"/>
+        </div>
+        <div class="field">
+          <label>Apellido</label>
+          <input class="input" type="text" placeholder="Rodríguez"/>
+        </div>
+
+        <div class="field icon">
+          <label>Teléfono particular</label>
+          <span class="ic">☏</span>
+          <input class="input" type="tel" placeholder="+52 55 1234 5678"/>
+        </div>
+        <div class="field icon">
+          <label>Teléfono laboral</label>
+          <span class="ic">☏</span>
+          <input class="input" type="tel" placeholder="+52 55 8765 4321"/>
+        </div>
+
+        <div class="field full icon">
+          <label>Correo electrónico</label>
+          <span class="ic">✉</span>
+          <input class="input" type="email" placeholder="ana@operadora.tv"/>
+        </div>
+
+        <div class="field full">
+          <label>Presupuesto del proyecto</label>
+          <div class="range-wrap">
+            <input id="budget" type="range" min="1000" max="10000" step="500" value="6000"/>
+            <div class="range-vals">
+              <span>$1,000</span>
+              <span>Actual: <b id="budgetVal">$6,000</b></span>
+              <span>$10,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Empresa</label>
+          <input class="input" type="text" placeholder="Operadora Latam S.A."/>
+        </div>
+        <div class="field">
+          <label>Cargo</label>
+          <input class="input" type="text" placeholder="Director de contenidos"/>
+        </div>
+
+        <div class="field full">
+          <label>¿Cómo nos conociste?</label>
+          <div class="checks">
+            <label class="check"><input type="checkbox"/><span class="box"></span>Amigo / colega</label>
+            <label class="check"><input type="checkbox" checked/><span class="box"></span>Radio / TV</label>
+            <label class="check"><input type="checkbox"/><span class="box"></span>Redes sociales</label>
+            <label class="check"><input type="checkbox"/><span class="box"></span>Evento / feria</label>
+            <label class="check"><input type="checkbox"/><span class="box"></span>Otro</label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label>Si otro, cuéntanos cómo</label>
+          <input class="input" type="text" placeholder="Nos llegó tu propuesta vía…"/>
+        </div>
+
+        <div class="submit-row">
+          <button class="btn-submit" type="submit">Enviar mensaje →</button>
+          <span class="submit-note">Respuesta en 48 h hábiles</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-mark"></span><span>Hype</span></div>
+    <div class="foot-meta">© 2026 Hype Distribución · Latinoamérica</div>
+    <div class="foot-links">
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Prensa</a>
+      <a href="#">Carreras</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const r = document.getElementById('budget');
+  const v = document.getElementById('budgetVal');
+  const fmt = n => '$' + Number(n).toLocaleString('en-US');
+  function paint(){
+    const pct = ((r.value - r.min) / (r.max - r.min)) * 100;
+    r.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${pct}%, rgba(138,156,197,0.2) ${pct}%)`;
+    v.textContent = fmt(r.value);
+  }
+  if (r) { r.addEventListener('input', paint); paint(); }
+</script>
+</body>
+</html>
