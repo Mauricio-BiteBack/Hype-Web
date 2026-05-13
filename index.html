@@ -341,6 +341,7 @@
   .channel.avi:hover{ box-shadow:0 30px 80px rgba(26,53,196,0.45), 0 0 0 1px rgba(56,108,255,0.5) }
   .channel.rewind:hover{ box-shadow:0 30px 80px rgba(34,184,207,0.4), 0 0 0 1px rgba(34,184,207,0.5) }
   .channel.kids:hover{ box-shadow:0 30px 80px rgba(245,197,24,0.35), 0 0 0 1px rgba(43,182,115,0.5) }
+  .channel.planeta-salvaje:hover{ box-shadow:0 30px 80px rgba(20,120,40,0.50), 0 0 0 1px rgba(60,200,80,0.5) }
   /* Rainbow top edge on every card */
   .channel::before{
     content:""; position:absolute; left:0; right:0; top:0; height:4px; z-index:3;
@@ -372,6 +373,23 @@
     filter:drop-shadow(0 0 16px rgba(245,197,24,0.45));
   }
   .ch-logo-kids img{ height:44px; width:auto; display:block }
+
+  /* Planeta Salvaje logo */
+  .ch-logo-planeta{
+    display:inline-flex; align-items:center;
+    background:rgba(8,50,15,0.75); border:1px solid rgba(60,200,80,0.35);
+    border-radius:6px; padding:6px 14px;
+    filter:drop-shadow(0 0 18px rgba(30,160,50,0.5));
+  }
+  .ch-logo-planeta span{
+    font-family:'Bebas Neue'; font-size:17px; letter-spacing:0.18em;
+    color:#fff; text-transform:uppercase; white-space:nowrap;
+  }
+
+  /* Centered last card when alone in a row of 3 */
+  .channel-grid > article:nth-child(4):last-child{
+    grid-column: 2 / 3;
+  }
 
   .ch-num{
     font-family:'JetBrains Mono', monospace; font-size:11px;
@@ -658,7 +676,7 @@
   <div class="section-head">
     <div>
       <div class="section-eyebrow">Nuestros canales</div>
-      <h2 class="section-title">Tres señales.<br/>Tres audiencias. <em>una sola promesa.</em></h2>
+      <h2 class="section-title">Cuatro señales.<br/>Cuatro audiencias. <em>una sola promesa.</em></h2>
     </div>
     <p class="section-sub">Desarrollamos, programamos y distribuimos canales temáticos de cine y entretenimiento, optimizados para el consumo familiar latinoamericano. Cada señal es una marca con voz propia.</p>
   </div>
@@ -742,6 +760,35 @@
               <span>Animación</span>
               <span>Familiar</span>
               <span>+6</span>
+            </div>
+            <a href="#contacto" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── Planeta Salvaje ── -->
+    <article class="channel planeta-salvaje">
+      <div class="bg">
+        <img src="Imagenes/Planeta-Salvaje.jpg" alt="Planeta Salvaje" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(5,18,5,0.25) 0%, rgba(5,20,8,0.82) 70%, rgba(3,12,5,0.96) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <div class="ch-logo-planeta">
+            <span>Planeta Salvaje</span>
+          </div>
+          <span class="ch-num">CH · 04</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">Naturaleza extrema.<br/>Adrenalina visual<br/>24/7.</h3>
+          <p class="ch-desc">Una experiencia cinematográfica de naturaleza pura: animales extremos, poder visual sin límites y supervivencia en estado salvaje.</p>
+          <div class="ch-foot">
+            <div class="ch-tags">
+              <span>Naturaleza</span>
+              <span>Extremo</span>
+              <span>Premium</span>
             </div>
             <a href="#contacto" class="ch-cta" aria-label="Ver más"></a>
           </div>
