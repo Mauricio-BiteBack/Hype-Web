@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/User/Desktop/HYPE/COMEDY CHANNEL.png\" \"C:/Users/User/Hype-Web/Imagenes/COMEDY CHANNEL.png\")",
+      "Bash(cp \"C:/Users/User/Desktop/HYPE/logo nuevo comedy \\(2\\).png\" \"C:/Users/User/Hype-Web/Imagenes/logo nuevo comedy \\(2\\).png\")"
+    ]
+  }
+}

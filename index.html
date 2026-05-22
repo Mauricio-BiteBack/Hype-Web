@@ -342,6 +342,7 @@
   .channel.rewind:hover{ box-shadow:0 30px 80px rgba(34,184,207,0.4), 0 0 0 1px rgba(34,184,207,0.5) }
   .channel.kids:hover{ box-shadow:0 30px 80px rgba(245,197,24,0.35), 0 0 0 1px rgba(43,182,115,0.5) }
   .channel.planeta-salvaje:hover{ box-shadow:0 30px 80px rgba(20,120,40,0.50), 0 0 0 1px rgba(60,200,80,0.5) }
+  .channel.comedy:hover{ box-shadow:0 30px 80px rgba(255,190,11,0.45), 0 0 0 1px rgba(255,190,11,0.55) }
   /* Rainbow top edge on every card */
   .channel::before{
     content:""; position:absolute; left:0; right:0; top:0; height:4px; z-index:3;
@@ -380,6 +381,13 @@
     filter:drop-shadow(0 0 18px rgba(30,160,50,0.5));
   }
   .ch-logo-planeta img{ height:48px; width:auto; display:block }
+
+  /* Comedy Channel logo */
+  .ch-logo-comedy{
+    display:inline-flex; align-items:center;
+    filter:drop-shadow(0 0 18px rgba(255,190,11,0.55));
+  }
+  .ch-logo-comedy img{ height:48px; width:auto; display:block }
 
   /* Centered last card when alone in a row of 3 */
   .channel-grid > article:nth-child(4):last-child{
@@ -786,6 +794,34 @@
               <span>Premium</span>
             </div>
             <a href="planeta-salvaje.html" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Comedy Channel ── -->
+    <article class="channel comedy">
+      <div class="bg">
+        <img src="Imagenes/COMEDY CHANNEL.png" alt="Comedy Channel" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(20,10,0,0.20) 0%, rgba(30,15,0,0.82) 70%, rgba(20,10,0,0.96) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <div class="ch-logo-comedy">
+            <img src="Imagenes/logo nuevo comedy (2).png" alt="Comedy Channel" />
+          </div>
+          <span class="ch-num">CH · 05</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">Comedy<br/>Channel</h3>
+          <p class="ch-desc">El canal de la risa: películas y contenidos de comedia para disfrutar en familia, con humor que no pasa de moda.</p>
+          <div class="ch-foot">
+            <div class="ch-tags">
+              <span>Risa</span>
+              <span>Diversión</span>
+              <span>Familiar</span>
+            </div>
+            <a href="#" class="ch-cta" aria-label="Ver más"></a>
           </div>
         </div>
       </div>
