@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Política de Privacidad — Hype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08091A; --bg-2:#0A0B22; --primary:#1A35C4;
+    --rb-red:#E03131; --rb-orange:#F08C2C; --rb-yellow:#F5C518;
+    --rb-green:#2BB673; --rb-cyan:#22B8CF; --rb-magenta:#D6336C;
+    --line:rgba(138,156,197,0.18); --text:#FFFFFF; --muted:#8A9CC5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;margin:0;line-height:0.95}
+
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.028;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size:200px 200px;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:68px;
+    display:flex;align-items:center;
+    background:rgba(8,9,26,0.85);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1320px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:28px;height:28px;border-radius:6px;
+    background:linear-gradient(135deg,var(--rb-red),var(--rb-magenta),var(--rb-cyan));display:block;flex-shrink:0}
+  .hype-wordmark{height:22px;width:auto;display:block}
+  .nav-back{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    padding:8px 16px;border-radius:8px;border:1px solid var(--line);transition:color .2s,border-color .2s}
+  .nav-back:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
+  .nav-back::before{content:"←";font-size:15px}
+
+  .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta));margin-top:68px}
+
+  /* Page header */
+  .page-header{
+    padding:80px 48px 64px;
+    background:
+      radial-gradient(900px 400px at 80% 0%, rgba(26,53,196,0.12), transparent 60%),
+      radial-gradient(700px 400px at 10% 100%, rgba(34,184,207,0.07), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .page-header-inner{max-width:860px;margin:0 auto}
+  .page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .page-eyebrow::before{content:"";width:36px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.95;margin-bottom:16px}
+  .page-meta{font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;
+    color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+  .page-subtitle{color:var(--muted);font-size:15px;line-height:1.7;margin-top:12px}
+
+  /* Content */
+  .content{max-width:860px;margin:0 auto;padding:72px 48px 100px}
+
+  .tc-intro{
+    background:rgba(26,53,196,0.08);border:1px solid rgba(26,53,196,0.2);
+    border-radius:12px;padding:24px 28px;margin-bottom:56px;
+    font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8
+  }
+  .tc-intro a{color:var(--rb-cyan);text-decoration:underline;text-underline-offset:3px}
+  .tc-intro strong{color:#fff}
+
+  .tc-section{margin-bottom:48px}
+  .tc-section-title{
+    font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.04em;
+    color:#fff;margin-bottom:14px;
+    display:flex;align-items:center;gap:12px
+  }
+  .tc-section-title::before{
+    content:"";display:block;width:4px;height:22px;border-radius:2px;flex-shrink:0;
+    background:linear-gradient(180deg,var(--rb-cyan),var(--rb-magenta))
+  }
+  .tc-section p{color:rgba(255,255,255,0.70);font-size:15px;line-height:1.8;margin:0 0 14px}
+  .tc-section p:last-child{margin-bottom:0}
+  .tc-section ul{
+    color:rgba(255,255,255,0.70);font-size:15px;line-height:1.8;
+    padding-left:20px;margin:0
+  }
+  .tc-section ul li{margin-bottom:6px}
+  .tc-section a{color:var(--rb-cyan);text-decoration:underline;text-underline-offset:3px}
+  .tc-section a:hover{color:#fff}
+  .tc-section strong{color:rgba(255,255,255,0.9)}
+
+  .tc-divider{border:none;border-top:1px solid var(--line);margin:0 0 48px}
+
+  .tc-copyright{
+    text-align:center;font-size:13px;color:var(--muted);
+    padding-top:40px;border-top:1px solid var(--line)
+  }
+
+  footer{border-top:1px solid var(--line);padding:40px 48px}
+  .foot-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  .foot-meta{font-size:13px;color:var(--muted)}
+  .foot-links{display:flex;gap:24px}
+  .foot-links a{font-size:13px;color:var(--muted);transition:color .2s}
+  .foot-links a:hover{color:#fff}
+
+  @media(max-width:900px){
+    .page-header{padding:60px 24px 48px}
+    .content{padding:56px 24px 80px}
+    .page-title{font-size:52px}
+  }
+  @media(max-width:600px){
+    .page-title{font-size:40px}
+    footer{padding:32px 24px}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </a>
+    <a href="index.html" class="nav-back">Volver al inicio</a>
+  </div>
+</nav>
+<div class="rainbow-bar"></div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Legal · www.hypetv.live</div>
+    <div class="page-meta">Última actualización: 2025</div>
+    <h1 class="page-title">Política de<br/>Privacidad</h1>
+    <p class="page-subtitle">Cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal.</p>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+  <div class="tc-intro">
+    En <strong>HYPE</strong>, reconocemos que la privacidad, confidencialidad y protección de la información personal de nuestros usuarios, clientes, aliados comerciales y visitantes constituye un aspecto fundamental de nuestra operación.<br/><br/>
+    La presente Política de Privacidad informa de manera clara y transparente cómo recopilamos, utilizamos, almacenamos, protegemos y tratamos la información personal proporcionada a través del sitio web <a href="https://www.hypetv.live">www.hypetv.live</a>, formularios digitales, comunicaciones comerciales u otros canales legítimos de interacción.<br/><br/>
+    Al acceder, navegar o utilizar el Sitio Web, el usuario declara haber leído, comprendido y aceptado los términos de la presente Política de Privacidad.
+  </div>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">1. Responsable del Tratamiento de la Información</h2>
+    <p>HYPE es responsable del tratamiento de la información personal recopilada a través de sus canales oficiales de comunicación y del Sitio Web.</p>
+    <p>Para cualquier consulta relacionada con privacidad o tratamiento de información, puede contactarnos a través de:<br/>
+    <strong>Correo electrónico:</strong> <a href="mailto:hypetv.live29@gmail.com">hypetv.live29@gmail.com</a></p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">2. Información que Recopilamos</h2>
+    <p>Podremos recopilar información proporcionada voluntariamente por usuarios, clientes o terceros mediante formularios de contacto, solicitudes comerciales, comunicaciones electrónicas o cualquier otro mecanismo habilitado. La información recopilada podrá incluir:</p>
+    <ul>
+      <li>Nombre completo</li>
+      <li>Dirección de correo electrónico</li>
+      <li>Número telefónico</li>
+      <li>Empresa u organización</li>
+      <li>Cargo o posición profesional</li>
+      <li>País o ubicación comercial</li>
+      <li>Información comercial compartida voluntariamente</li>
+      <li>Cualquier información incluida en formularios, mensajes o solicitudes enviadas por el usuario</li>
+    </ul>
+    <p style="margin-top:14px">Asimismo, podremos recopilar automáticamente información técnica relacionada con el acceso y uso del Sitio Web, incluyendo:</p>
+    <ul>
+      <li>Dirección IP</li>
+      <li>Tipo de navegador y sistema operativo</li>
+      <li>Fecha, hora y tiempo de acceso</li>
+      <li>Páginas visitadas y fuente de tráfico</li>
+      <li>Datos del dispositivo utilizado</li>
+    </ul>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">3. Finalidad del Uso de la Información</h2>
+    <p>La información recopilada será utilizada exclusivamente para fines legítimos relacionados con la actividad comercial y operativa de HYPE, incluyendo:</p>
+    <ul>
+      <li>Atender consultas, solicitudes o requerimientos comerciales</li>
+      <li>Brindar información sobre nuestros servicios de distribución de señales premium y contenido audiovisual</li>
+      <li>Contactar a potenciales clientes, operadores, plataformas o aliados comerciales</li>
+      <li>Gestionar procesos comerciales, precontractuales o institucionales</li>
+      <li>Mejorar el funcionamiento, seguridad y experiencia de navegación del Sitio Web</li>
+      <li>Realizar análisis estadísticos internos y evaluaciones de desempeño</li>
+      <li>Gestionar comunicaciones comerciales, promocionales o institucionales relacionadas con nuestros servicios</li>
+    </ul>
+    <p style="margin-top:14px">HYPE no utilizará la información proporcionada para fines incompatibles con los aquí descritos sin autorización previa del titular.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">4. Confidencialidad y Seguridad</h2>
+    <p>HYPE implementa medidas técnicas, administrativas y organizativas razonables para proteger la información contra pérdida, acceso no autorizado, uso indebido, alteración, divulgación o destrucción.</p>
+    <p>No obstante, debido a la naturaleza de internet y de las infraestructuras tecnológicas, ninguna plataforma puede garantizar seguridad absoluta frente a eventos externos, incidentes tecnológicos o accesos no autorizados.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">5. Compartición de Información</h2>
+    <p>HYPE no vende, alquila ni comercializa información personal de sus usuarios.</p>
+    <p>Sin perjuicio de ello, la información podrá ser compartida cuando resulte necesario para:</p>
+    <ul>
+      <li>Operación técnica y funcionamiento del Sitio Web</li>
+      <li>Servicios tecnológicos, hosting, soporte o infraestructura digital</li>
+      <li>Procesos administrativos internos</li>
+      <li>Atención de requerimientos emitidos por autoridades competentes</li>
+      <li>Ejecución de relaciones comerciales o precontractuales autorizadas</li>
+      <li>Situaciones en las que el titular haya otorgado su consentimiento expreso</li>
+    </ul>
+    <p style="margin-top:14px">En todos los casos, HYPE procurará que cualquier tercero involucrado mantenga estándares razonables de confidencialidad.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">6. Conservación de la Información</h2>
+    <p>La información será conservada únicamente durante el tiempo necesario para cumplir con las finalidades para las cuales fue recopilada o mientras exista una relación comercial, contractual o administrativa que justifique su conservación.</p>
+    <p>Posteriormente, podrá ser eliminada, archivada o anonimizada según corresponda.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">7. Cookies y Tecnologías de Navegación</h2>
+    <p>El Sitio Web podrá utilizar cookies y tecnologías similares con el propósito de:</p>
+    <ul>
+      <li>Mejorar la experiencia de navegación</li>
+      <li>Optimizar funcionalidades del sitio</li>
+      <li>Analizar tráfico y comportamiento de navegación</li>
+      <li>Reforzar la seguridad tecnológica</li>
+    </ul>
+    <p style="margin-top:14px">El usuario podrá configurar su navegador para rechazar o eliminar cookies; sin embargo, algunas funcionalidades podrían verse limitadas.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">8. Enlaces a Terceros</h2>
+    <p>El Sitio Web podrá contener enlaces hacia sitios o plataformas de terceros. HYPE no asume responsabilidad sobre políticas, contenidos, prácticas o medidas de privacidad implementadas por dichos terceros.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">9. Derechos del Usuario</h2>
+    <p>El usuario podrá solicitar en cualquier momento:</p>
+    <ul>
+      <li>Acceso a su información</li>
+      <li>Corrección o actualización de datos</li>
+      <li>Eliminación de información proporcionada</li>
+      <li>Restricción u oposición al tratamiento de su información</li>
+      <li>Revocación del consentimiento previamente otorgado</li>
+    </ul>
+    <p style="margin-top:14px">Para ello, puede contactarnos a: <a href="mailto:hypetv.live29@gmail.com">hypetv.live29@gmail.com</a></p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">10. Modificaciones</h2>
+    <p>HYPE se reserva el derecho de actualizar, modificar o complementar la presente Política de Privacidad en cualquier momento, ya sea por cambios operativos, tecnológicos, comerciales o de mejora continua.</p>
+    <p>Las modificaciones entrarán en vigor desde su publicación en el Sitio Web.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">11. Contacto</h2>
+    <p>Para cualquier consulta relacionada con esta Política de Privacidad o el tratamiento de información:<br/>
+    <strong>Correo electrónico:</strong> <a href="mailto:hypetv.live29@gmail.com">hypetv.live29@gmail.com</a></p>
+  </div>
+
+  <div class="tc-copyright">© 2025 HYPE. Todos los derechos reservados.</div>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </div>
+    <div class="foot-meta">© 2026 Hype Distribución · Latinoamérica</div>
+    <div class="foot-links">
+      <a href="privacidad.html">Política de Privacidad</a>
+      <a href="terminos.html">Términos y Condiciones</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
