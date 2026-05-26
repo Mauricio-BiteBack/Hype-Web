@@ -343,6 +343,7 @@
   .channel.kids:hover{ box-shadow:0 30px 80px rgba(245,197,24,0.35), 0 0 0 1px rgba(43,182,115,0.5) }
   .channel.planeta-salvaje:hover{ box-shadow:0 30px 80px rgba(20,120,40,0.50), 0 0 0 1px rgba(60,200,80,0.5) }
   .channel.comedy:hover{ box-shadow:0 30px 80px rgba(255,190,11,0.45), 0 0 0 1px rgba(255,190,11,0.55) }
+  .channel.planeta-historia:hover{ box-shadow:0 30px 80px rgba(139,90,43,0.50), 0 0 0 1px rgba(180,120,60,0.55) }
   /* Rainbow top edge on every card */
   .channel::before{
     content:""; position:absolute; left:0; right:0; top:0; height:4px; z-index:3;
@@ -388,6 +389,13 @@
     filter:drop-shadow(0 0 18px rgba(255,190,11,0.55));
   }
   .ch-logo-comedy img{ height:137px; width:auto; display:block; transform:translateY(-36px) }
+
+  /* Planeta Historia logo */
+  .ch-logo-historia{
+    display:inline-flex; align-items:center;
+    filter:drop-shadow(0 0 18px rgba(139,90,43,0.55));
+  }
+  .ch-logo-historia img{ height:48px; width:auto; display:block }
 
   /* Centered last card when alone in a row of 3 */
   .channel-grid > article:nth-child(4):last-child{
@@ -822,6 +830,34 @@
               <span>Familiar</span>
             </div>
             <a href="comedy.html" class="ch-cta" aria-label="Ver más"></a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Planeta Historia ── -->
+    <article class="channel planeta-historia">
+      <div class="bg">
+        <img src="Imagenes/PLANETA HISTORIA IMAGEN HYPE.png" alt="Planeta Historia" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+      <div class="overlay" style="background:linear-gradient(180deg, rgba(15,8,3,0.25) 0%, rgba(20,10,4,0.82) 70%, rgba(12,6,2,0.96) 100%);"></div>
+      <div class="body">
+        <div class="ch-top">
+          <div class="ch-logo-historia">
+            <img src="Imagenes/PLANETA HISTORIA (MARRON) (1).png" alt="Planeta Historia" />
+          </div>
+          <span class="ch-num">CH · 06</span>
+        </div>
+        <div class="ch-bottom">
+          <h3 class="ch-tag">Planeta<br/>Historia</h3>
+          <p class="ch-desc">Documentales de historia humana, civilizaciones, guerras, culturas e imperios que marcaron el mundo. Un viaje al pasado sin límites.</p>
+          <div class="ch-foot">
+            <div class="ch-tags">
+              <span>Historia</span>
+              <span>Civilizaciones</span>
+              <span>Cultura</span>
+            </div>
+            <a href="planeta-historia.html" class="ch-cta" aria-label="Ver más"></a>
           </div>
         </div>
       </div>

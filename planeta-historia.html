@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Planeta Historia — Hype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08091A; --bg-2:#0A0B22; --primary:#1A35C4;
+    --rb-red:#E03131; --rb-orange:#F08C2C; --rb-yellow:#F5C518;
+    --rb-green:#2BB673; --rb-cyan:#22B8CF; --rb-magenta:#D6336C;
+    --line:rgba(138,156,197,0.18); --text:#FFFFFF; --muted:#8A9CC5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;margin:0;line-height:0.95}
+
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.028;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size:200px 200px;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:68px;
+    display:flex;align-items:center;background:rgba(8,9,26,0.85);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1320px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--rb-red),var(--rb-magenta),var(--rb-cyan));display:block;flex-shrink:0}
+  .hype-wordmark{height:22px;width:auto;display:block}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .nav-back,.nav-cart-link{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    padding:8px 14px;border-radius:8px;border:1px solid var(--line);transition:color .2s,border-color .2s}
+  .nav-back:hover,.nav-cart-link:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
+  .nav-back::before{content:"←";font-size:15px}
+  .cart-badge{min-width:20px;height:20px;border-radius:999px;background:#1A35C4;
+    color:#fff;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+
+  .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta));margin-top:68px}
+
+  .channel-hero{position:relative;height:70vh;min-height:480px;overflow:hidden}
+  .channel-hero img.cover{width:100%;height:100%;object-fit:cover;display:block}
+  .channel-hero .overlay{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(15,8,3,0.15) 0%,rgba(20,10,4,0.65) 55%,rgba(12,6,2,0.97) 100%)}
+  .channel-hero .hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px;max-width:1320px;margin:0 auto;}
+  .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#B4783C;
+    text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .hero-eyebrow::before{content:"";width:36px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+  .channel-logo-wrap{margin-bottom:20px;display:inline-flex;align-items:center;
+    filter:drop-shadow(0 0 24px rgba(139,90,43,0.65))}
+  .channel-logo-wrap img{height:72px;width:auto;display:block}
+  .channel-tagline{font-size:18px;color:rgba(255,255,255,0.75);max-width:600px;line-height:1.6;margin-top:12px}
+
+  .channel-body{max-width:1320px;margin:0 auto;padding:80px 48px}
+
+  .dist-badge{display:inline-flex;align-items:center;gap:10px;
+    background:rgba(139,90,43,0.12);border:1px solid rgba(180,120,60,0.25);
+    border-radius:8px;padding:10px 18px;margin-bottom:48px}
+  .dist-badge .dot{width:8px;height:8px;border-radius:50%;background:#B4783C;flex-shrink:0;box-shadow:0 0 8px rgba(180,120,60,0.8)}
+  .dist-badge span{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
+  .dist-badge strong{color:#fff}
+
+  .desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:80px}
+  .desc-title{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.95;margin-bottom:24px}
+  .desc-title em{font-style:normal;color:var(--muted);font-size:0.65em}
+  .desc-text{color:rgba(255,255,255,0.72);font-size:16px;line-height:1.75;margin-bottom:28px}
+  .ch-tags{display:flex;gap:10px;flex-wrap:wrap}
+  .ch-tags span{font-size:11px;padding:5px 12px;border-radius:999px;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);
+    letter-spacing:0.12em;text-transform:uppercase}
+  .desc-stats{display:flex;flex-direction:column;gap:24px;padding-top:12px}
+  .stat-row{display:flex;flex-direction:column;gap:4px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+  .stat-row:last-child{border-bottom:none;padding-bottom:0}
+  .stat-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+  .stat-value{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1}
+
+  .video-section{margin-bottom:80px}
+  .video-label{font-size:12px;letter-spacing:0.22em;color:#B4783C;text-transform:uppercase;
+    display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:'JetBrains Mono',monospace}
+  .video-label::before{content:"";width:36px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+  .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
+    border-radius:18px;border:1px solid var(--line);box-shadow:0 40px 100px rgba(139,90,43,0.20)}
+  .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:80px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;
+    font-size:14px;font-weight:600;letter-spacing:0.04em;transition:all .2s;cursor:pointer;border:none}
+  .btn-cart{background:linear-gradient(135deg,#1A35C4,#386CFF);color:#fff;box-shadow:0 12px 40px rgba(26,53,196,0.4)}
+  .btn-cart:hover{transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
+
+  footer{border-top:1px solid var(--line);padding:40px 48px}
+  .foot-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  .foot-meta{font-size:13px;color:var(--muted)}
+  .foot-links{display:flex;gap:24px}
+  .foot-links a{font-size:13px;color:var(--muted);transition:color .2s}
+  .foot-links a:hover{color:#fff}
+
+  @media(max-width:900px){
+    .desc-grid{grid-template-columns:1fr;gap:40px}
+    .desc-title{font-size:56px}
+    .channel-body{padding:60px 24px}
+    .channel-hero .hero-content{padding:32px 24px}
+    footer{padding:32px 24px}
+  }
+  @media(max-width:600px){
+    .desc-title{font-size:44px}
+    .channel-logo-wrap img{height:52px}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </a>
+    <div class="nav-right">
+      <a href="index.html#contacto" class="nav-cart-link" id="ch-cart-link">
+        Solicitud&nbsp;<span class="cart-badge" id="ch-cart-count">0</span>
+      </a>
+      <a href="index.html#canales" class="nav-back">Volver a canales</a>
+    </div>
+  </div>
+</nav>
+<div class="rainbow-bar"></div>
+
+<section class="channel-hero">
+  <img class="cover" src="Imagenes/PLANETA HISTORIA IMAGEN HYPE.png" alt="Planeta Historia" />
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Canal · 06 &nbsp;·&nbsp; Distribuido por Hype</div>
+    <div class="channel-logo-wrap">
+      <img src="Imagenes/PLANETA HISTORIA (MARRON) (1).png" alt="Planeta Historia" />
+    </div>
+    <p class="channel-tagline">Historia humana, civilizaciones y culturas que transformaron el mundo. Un viaje al pasado en alta definición.</p>
+  </div>
+</section>
+
+<div class="channel-body">
+
+  <div class="dist-badge">
+    <span class="dot"></span>
+    <span>Distribuido por <strong>Hype</strong> en toda Latinoamérica</span>
+  </div>
+
+  <div class="desc-grid">
+    <div>
+      <h2 class="desc-title">Historia.<br/>Cultura.<br/><em>Civilizaciones sin límites.</em></h2>
+      <p class="desc-text">Planeta Historia es el canal de documentales históricos de Hype: un viaje profundo por la historia humana, desde las grandes civilizaciones antiguas hasta los imperios latinoamericanos que definieron un continente. Guerras mundiales, misterios ancestrales, biografías de personajes que cambiaron el mundo.</p>
+      <p class="desc-text">Desde el Imperio Inca y el Imperio Maya hasta las civilizaciones amazónicas, pasando por la historia europea, africana y asiática. Cultura, conquista, resistencia y legado — todo en una sola señal, disponible 24 horas al día.</p>
+      <div class="ch-tags">
+        <span>Historia</span>
+        <span>Civilizaciones</span>
+        <span>Guerras</span>
+        <span>Imperio Inca</span>
+        <span>Imperio Maya</span>
+        <span>Cultura</span>
+        <span>Biografías</span>
+        <span>Documentales</span>
+        <span>Misterio</span>
+        <span>24/7</span>
+      </div>
+    </div>
+    <div class="desc-stats">
+      <div class="stat-row">
+        <span class="stat-label">Programación</span>
+        <span class="stat-value">24 / 7</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Categoría</span>
+        <span class="stat-value">Historia & Documentales</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Distribuidor</span>
+        <span class="stat-value">Hype Latam</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Territorio</span>
+        <span class="stat-value">Latinoamérica</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-label">Video de presentación</div>
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/cfbQ9SfIrPw?rel=0&modestbranding=1&color=white"
+        title="Planeta Historia — Reel de presentación"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <button id="cart-btn" class="btn btn-cart" data-channel="planeta-historia" onclick="Cart.toggle('planeta-historia')">+ Agregar al carrito</button>
+    <a href="index.html#contacto" class="btn btn-ghost">Solicitar distribución →</a>
+    <a href="index.html#canales" class="btn btn-ghost">Ver todos los canales</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </div>
+    <div class="foot-meta">© 2026 Hype Distribución · Latinoamérica</div>
+    <div class="foot-links">
+      <a href="privacidad.html">Aviso de privacidad</a>
+      <a href="terminos.html">Términos y Condiciones</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+<script src="cart.js"></script>
+</body>
+</html>
