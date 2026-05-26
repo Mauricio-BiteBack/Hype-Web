@@ -10,8 +10,8 @@
 <style>
   :root{
     --bg:#08091A; --bg-2:#0A0B22; --primary:#1A35C4;
-    --rb-red:#E03131; --rb-orange:#F08C2C; --rb-yellow:#F5C518;
-    --rb-green:#2BB673; --rb-cyan:#22B8CF; --rb-magenta:#D6336C;
+    --rb-red:#CBCBCB; --rb-orange:#FDFC01; --rb-yellow:#01FFFF;
+    --rb-green:#00FE00; --rb-cyan:#FF00FE; --rb-magenta:#FE0002; --rb-blue:#0000FE;
     --line:rgba(138,156,197,0.18); --text:#FFFFFF; --muted:#8A9CC5;
   }
   *{box-sizing:border-box}
@@ -42,7 +42,7 @@
   .nav-back::before{content:"←";font-size:15px}
 
   /* ── Rainbow bar ── */
-  .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta));margin-top:68px}
+  .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta),var(--rb-blue));margin-top:68px}
 
   /* ── Hero ── */
   .channel-hero{position:relative;height:70vh;min-height:480px;overflow:hidden}
@@ -56,7 +56,7 @@
     letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
     display:flex;align-items:center;gap:10px;margin-bottom:20px}
   .hero-eyebrow::before{content:"";width:36px;height:3px;border-radius:2px;
-    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta),var(--rb-blue))}
   .channel-logo-wrap{margin-bottom:24px;filter:drop-shadow(0 0 24px rgba(30,160,50,0.6))}
   .channel-logo-wrap img{height:72px;width:auto;display:block}
   .channel-tagline{font-size:18px;color:rgba(255,255,255,0.75);max-width:560px;line-height:1.6;margin-top:12px}
@@ -94,7 +94,7 @@
   .video-label{font-size:12px;letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
     display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:'JetBrains Mono',monospace}
   .video-label::before{content:"";width:36px;height:3px;border-radius:2px;
-    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta),var(--rb-blue))}
   .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
     border-radius:18px;border:1px solid var(--line);
     box-shadow:0 40px 100px rgba(10,120,30,0.25)}
