@@ -193,14 +193,28 @@
     height:118px; border-radius:14px;
     display:flex; align-items:center; justify-content:center;
     background:
-      linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.15)),
+      linear-gradient(135deg, rgba(0,0,0,0.42), rgba(0,0,0,0.06)),
       linear-gradient(90deg,
-        var(--rb-red), var(--rb-orange), var(--rb-yellow),
-        var(--rb-green), var(--rb-cyan), var(--rb-magenta), var(--rb-blue));
+        #ffffff 0%,      #ffffff 14.28%,
+        #ffff00 14.28%,  #ffff00 28.57%,
+        #00ffff 28.57%,  #00ffff 42.85%,
+        #00ff00 42.85%,  #00ff00 57.14%,
+        #ff00ff 57.14%,  #ff00ff 71.42%,
+        #ff0000 71.42%,  #ff0000 85.71%,
+        #0000ff 85.71%,  #0000ff 100%
+      );
     position:relative; overflow:hidden;
-    box-shadow:0 16px 40px rgba(26,53,196,0.35);
+    box-shadow:0 0 32px rgba(0,255,255,0.35), 0 0 64px rgba(255,0,255,0.20), 0 16px 40px rgba(0,0,0,0.65);
   }
-  .badge-shape svg{ width:54px; height:54px; opacity:.92}
+  .badge-shape::after{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+    background:repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 2px,
+      rgba(0,0,0,0.13) 2px, rgba(0,0,0,0.13) 4px
+    );
+  }
+  .badge-shape svg{ width:54px; height:54px; opacity:.92; position:relative; z-index:2}
 
   .hero-text{ padding:14px 0 0 16px; max-width:560px }
   .eyebrow{
