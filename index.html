@@ -853,33 +853,39 @@
       </div>
     </div>
 
-    <form class="form-card" onsubmit="event.preventDefault(); alert('Demo — formulario enviado')">
+    <form class="form-card" id="contact-form">
+      <!-- FormSubmit config -->
+      <input type="hidden" name="_subject" value="Nueva solicitud comercial — Hype Web"/>
+      <input type="hidden" name="_template" value="table"/>
+      <input type="hidden" name="_captcha" value="false"/>
+      <input type="hidden" name="Presupuesto" id="budgetHidden" value="$1,500"/>
+
       <div class="form-grid">
 
         <div class="field">
           <label>Nombre</label>
-          <input class="input" type="text" placeholder="Ana"/>
+          <input class="input" type="text" name="Nombre" placeholder="Ana"/>
         </div>
         <div class="field">
           <label>Apellido</label>
-          <input class="input" type="text" placeholder="Rodríguez"/>
+          <input class="input" type="text" name="Apellido" placeholder="Rodríguez"/>
         </div>
 
         <div class="field icon">
           <label>Teléfono particular</label>
           <span class="ic">☏</span>
-          <input class="input" type="tel" placeholder="+52 55 1234 5678"/>
+          <input class="input" type="tel" name="Teléfono particular" placeholder="+52 55 1234 5678"/>
         </div>
         <div class="field icon">
           <label>Teléfono laboral</label>
           <span class="ic">☏</span>
-          <input class="input" type="tel" placeholder="+52 55 8765 4321"/>
+          <input class="input" type="tel" name="Teléfono laboral" placeholder="+52 55 8765 4321"/>
         </div>
 
         <div class="field full icon">
           <label>Correo electrónico</label>
           <span class="ic">✉</span>
-          <input class="input" type="email" placeholder="ana@operadora.tv"/>
+          <input class="input" type="email" name="email" placeholder="ana@operadora.tv"/>
         </div>
 
         <div class="field full">
@@ -896,31 +902,31 @@
 
         <div class="field">
           <label>Empresa</label>
-          <input class="input" type="text" placeholder="Operadora Latam S.A."/>
+          <input class="input" type="text" name="Empresa" placeholder="Operadora Latam S.A."/>
         </div>
         <div class="field">
           <label>Cargo</label>
-          <input class="input" type="text" placeholder="Director de contenidos"/>
+          <input class="input" type="text" name="Cargo" placeholder="Director de contenidos"/>
         </div>
 
         <div class="field full">
           <label>¿Cómo nos conociste?</label>
           <div class="checks">
-            <label class="check"><input type="checkbox"/><span class="box"></span>Amigo / colega</label>
-            <label class="check"><input type="checkbox" checked/><span class="box"></span>Radio / TV</label>
-            <label class="check"><input type="checkbox"/><span class="box"></span>Redes sociales</label>
-            <label class="check"><input type="checkbox"/><span class="box"></span>Evento / feria</label>
-            <label class="check"><input type="checkbox"/><span class="box"></span>Otro</label>
+            <label class="check"><input type="checkbox" name="Amigo / colega" value="Sí"/><span class="box"></span>Amigo / colega</label>
+            <label class="check"><input type="checkbox" name="Radio / TV" value="Sí"/><span class="box"></span>Radio / TV</label>
+            <label class="check"><input type="checkbox" name="Redes sociales" value="Sí"/><span class="box"></span>Redes sociales</label>
+            <label class="check"><input type="checkbox" name="Evento / feria" value="Sí"/><span class="box"></span>Evento / feria</label>
+            <label class="check"><input type="checkbox" name="Otro" value="Sí"/><span class="box"></span>Otro</label>
           </div>
         </div>
 
         <div class="field full">
           <label>Si otro, cuéntanos cómo</label>
-          <input class="input" type="text" placeholder="Nos llegó tu propuesta vía…"/>
+          <input class="input" type="text" name="Otro medio" placeholder="Nos llegó tu propuesta vía…"/>
         </div>
 
         <div class="submit-row">
-          <button class="btn-submit" type="submit">Enviar mensaje →</button>
+          <button class="btn-submit" type="submit" id="btn-submit">Enviar mensaje →</button>
           <span class="submit-note">Respuesta en 48 h hábiles</span>
         </div>
 
@@ -947,15 +953,52 @@
 </footer>
 
 <script>
+  /* Range slider */
   const r = document.getElementById('budget');
   const v = document.getElementById('budgetVal');
+  const bh = document.getElementById('budgetHidden');
   const fmt = n => '$' + Number(n).toLocaleString('en-US');
   function paint(){
     const pct = ((r.value - r.min) / (r.max - r.min)) * 100;
     r.style.background = `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${pct}%, rgba(138,156,197,0.2) ${pct}%)`;
-    v.textContent = fmt(r.value);
+    const val = fmt(r.value);
+    v.textContent = val;
+    if (bh) bh.value = val;
   }
   if (r) { r.addEventListener('input', paint); paint(); }
+
+  /* Form submission */
+  const form = document.getElementById('contact-form');
+  const btnSubmit = document.getElementById('btn-submit');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btnSubmit.textContent = 'Enviando…';
+      btnSubmit.disabled = true;
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/hypetv.live29@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const json = await res.json();
+        if (json.success === 'true' || json.success === true) {
+          form.innerHTML = `
+            <div style="padding:48px 32px;text-align:center">
+              <div style="font-size:40px;margin-bottom:16px">✓</div>
+              <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;margin-bottom:12px">Mensaje enviado</h3>
+              <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7">Recibimos tu solicitud. Te respondemos en menos de 48 horas hábiles a través de <strong>hypetv.live29@gmail.com</strong>.</p>
+            </div>`;
+        } else {
+          throw new Error('error');
+        }
+      } catch {
+        btnSubmit.textContent = 'Enviar mensaje →';
+        btnSubmit.disabled = false;
+        alert('Hubo un error al enviar. Por favor intenta nuevamente o escríbenos a hypetv.live29@gmail.com');
+      }
+    });
+  }
 </script>
 </body>
 </html>
