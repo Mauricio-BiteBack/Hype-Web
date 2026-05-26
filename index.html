@@ -853,7 +853,7 @@
       </div>
     </div>
 
-    <form class="form-card" id="contact-form">
+    <form class="form-card" id="contact-form" action="https://formsubmit.co/hypetv.live29@gmail.com" method="POST">
       <!-- FormSubmit config -->
       <input type="hidden" name="_subject" value="Nueva solicitud comercial — Hype Web"/>
       <input type="hidden" name="_template" value="table"/>
@@ -953,7 +953,6 @@
 </footer>
 
 <script>
-  /* Range slider */
   const r = document.getElementById('budget');
   const v = document.getElementById('budgetVal');
   const bh = document.getElementById('budgetHidden');
@@ -966,39 +965,6 @@
     if (bh) bh.value = val;
   }
   if (r) { r.addEventListener('input', paint); paint(); }
-
-  /* Form submission */
-  const form = document.getElementById('contact-form');
-  const btnSubmit = document.getElementById('btn-submit');
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      btnSubmit.textContent = 'Enviando…';
-      btnSubmit.disabled = true;
-      try {
-        const res = await fetch('https://formsubmit.co/ajax/hypetv.live29@gmail.com', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-        const json = await res.json();
-        if (json.success === 'true' || json.success === true) {
-          form.innerHTML = `
-            <div style="padding:48px 32px;text-align:center">
-              <div style="font-size:40px;margin-bottom:16px">✓</div>
-              <h3 style="font-family:'Bebas Neue',sans-serif;font-size:36px;margin-bottom:12px">Mensaje enviado</h3>
-              <p style="color:rgba(255,255,255,0.65);font-size:15px;line-height:1.7">Recibimos tu solicitud. Te respondemos en menos de 48 horas hábiles a través de <strong>hypetv.live29@gmail.com</strong>.</p>
-            </div>`;
-        } else {
-          throw new Error('error');
-        }
-      } catch {
-        btnSubmit.textContent = 'Enviar mensaje →';
-        btnSubmit.disabled = false;
-        alert('Hubo un error al enviar. Por favor intenta nuevamente o escríbenos a hypetv.live29@gmail.com');
-      }
-    });
-  }
 </script>
 </body>
 </html>
