@@ -589,9 +589,9 @@
     </div>
     <div class="nav-cta">
       <span class="lang">ES / EN / PT</span>
-      <a href="#" class="btn btn-ghost" aria-label="Carrito de compras" style="padding:11px 16px;">
+      <a href="#contacto" class="btn btn-ghost" aria-label="Canales seleccionados" style="padding:11px 16px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span style="font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em">0</span>
+        <span id="nav-cart-count" style="font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em">0</span>
       </a>
       <a href="#contacto" class="btn btn-magenta">Contáctanos →</a>
     </div>
@@ -736,7 +736,7 @@
               <span>Cult</span>
               <span>Retro</span>
             </div>
-            <a href="#contacto" class="ch-cta" aria-label="Ver más"></a>
+            <a href="rewind.html" class="ch-cta" aria-label="Ver más"></a>
           </div>
         </div>
       </div>
@@ -764,7 +764,7 @@
               <span>Familiar</span>
               <span>+6</span>
             </div>
-            <a href="#contacto" class="ch-cta" aria-label="Ver más"></a>
+            <a href="kids.html" class="ch-cta" aria-label="Ver más"></a>
           </div>
         </div>
       </div>
@@ -821,7 +821,7 @@
               <span>Diversión</span>
               <span>Familiar</span>
             </div>
-            <a href="#" class="ch-cta" aria-label="Ver más"></a>
+            <a href="comedy.html" class="ch-cta" aria-label="Ver más"></a>
           </div>
         </div>
       </div>
@@ -851,6 +851,12 @@
           <span>SW 185 1st Court · Miami, Florida</span>
         </div>
       </div>
+
+      <!-- Cart panel -->
+      <div style="margin-top:32px;padding-top:28px;border-top:1px solid var(--line)">
+        <div style="font-size:11px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:14px">Canales en tu solicitud</div>
+        <div id="cart-panel"></div>
+      </div>
     </div>
 
     <form class="form-card" id="contact-form" action="https://formsubmit.co/hypetv.live29@gmail.com" method="POST">
@@ -858,6 +864,7 @@
       <input type="hidden" name="_subject" value="Nueva solicitud comercial — Hype Web"/>
       <input type="hidden" name="_template" value="table"/>
       <input type="hidden" name="_captcha" value="false"/>
+      <input type="hidden" name="Canales solicitados" id="cart-field" value="Ningún canal seleccionado"/>
       <input type="hidden" name="Presupuesto" id="budgetHidden" value="$1,500"/>
 
       <div class="form-grid">
@@ -952,6 +959,7 @@
   </div>
 </footer>
 
+<script src="cart.js"></script>
 <script>
   const r = document.getElementById('budget');
   const v = document.getElementById('budgetVal');

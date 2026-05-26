@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Planeta Salvaje — Hype</title>
+<title>AVI Kids — Hype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,61 +20,50 @@
   a{color:inherit;text-decoration:none}
   h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;margin:0;line-height:0.95}
 
-  /* ── Film grain ── */
   .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.028;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-size:200px 200px;}
 
-  /* ── Nav ── */
   .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:68px;
-    display:flex;align-items:center;
-    background:rgba(8,9,26,0.85);backdrop-filter:blur(16px);
+    display:flex;align-items:center;background:rgba(8,9,26,0.85);backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line);}
-  .nav-inner{max-width:1320px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .nav-inner{max-width:1320px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .logo{display:flex;align-items:center;gap:12px}
-  .logo-mark{width:28px;height:28px;border-radius:6px;
-    background:linear-gradient(135deg,var(--rb-red),var(--rb-magenta),var(--rb-cyan));display:block;flex-shrink:0}
+  .logo-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--rb-red),var(--rb-magenta),var(--rb-cyan));display:block;flex-shrink:0}
   .hype-wordmark{height:22px;width:auto;display:block}
-  .nav-back{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
-    padding:8px 16px;border-radius:8px;border:1px solid var(--line);
-    transition:color .2s,border-color .2s}
-  .nav-back:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
+  .nav-right{display:flex;align-items:center;gap:10px}
+  .nav-back,.nav-cart-link{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    padding:8px 14px;border-radius:8px;border:1px solid var(--line);transition:color .2s,border-color .2s}
+  .nav-back:hover,.nav-cart-link:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
   .nav-back::before{content:"←";font-size:15px}
+  .cart-badge{min-width:20px;height:20px;border-radius:999px;background:#1A35C4;
+    color:#fff;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
 
-  /* ── Rainbow bar ── */
   .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta));margin-top:68px}
 
-  /* ── Hero ── */
   .channel-hero{position:relative;height:70vh;min-height:480px;overflow:hidden}
-  .channel-hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .channel-hero img.cover{width:100%;height:100%;object-fit:cover;display:block}
   .channel-hero .overlay{position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(5,18,5,0.15) 0%,rgba(5,20,8,0.60) 55%,rgba(3,12,5,0.97) 100%)}
-  .channel-hero .hero-content{
-    position:absolute;bottom:0;left:0;right:0;padding:48px;
-    max-width:1320px;margin:0 auto;}
-  .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;
-    letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
-    display:flex;align-items:center;gap:10px;margin-bottom:20px}
+    background:linear-gradient(180deg,rgba(20,5,5,0.15) 0%,rgba(15,5,5,0.65) 55%,rgba(10,5,5,0.97) 100%)}
+  .channel-hero .hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px;max-width:1320px;margin:0 auto;}
+  .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--rb-yellow);
+    text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:20px}
   .hero-eyebrow::before{content:"";width:36px;height:3px;border-radius:2px;
     background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
-  .channel-logo-wrap{margin-bottom:24px;filter:drop-shadow(0 0 24px rgba(30,160,50,0.6))}
-  .channel-logo-wrap img{height:72px;width:auto;display:block}
+  .channel-logo-wrap{margin-bottom:20px;display:inline-flex;align-items:center;
+    filter:drop-shadow(0 0 24px rgba(245,197,24,0.55))}
+  .channel-logo-wrap img{height:56px;width:auto;display:block}
   .channel-tagline{font-size:18px;color:rgba(255,255,255,0.75);max-width:560px;line-height:1.6;margin-top:12px}
 
-  /* ── Body ── */
   .channel-body{max-width:1320px;margin:0 auto;padding:80px 48px}
 
-  /* ── Distributor badge ── */
-  .dist-badge{
-    display:inline-flex;align-items:center;gap:10px;
-    background:rgba(20,120,40,0.15);border:1px solid rgba(60,200,80,0.25);
+  .dist-badge{display:inline-flex;align-items:center;gap:10px;
+    background:rgba(245,197,24,0.10);border:1px solid rgba(245,197,24,0.22);
     border-radius:8px;padding:10px 18px;margin-bottom:48px}
-  .dist-badge .dot{width:8px;height:8px;border-radius:50%;background:#3CC850;flex-shrink:0;
-    box-shadow:0 0 8px rgba(60,200,80,0.8)}
+  .dist-badge .dot{width:8px;height:8px;border-radius:50%;background:#F5C518;flex-shrink:0;box-shadow:0 0 8px rgba(245,197,24,0.8)}
   .dist-badge span{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
   .dist-badge strong{color:#fff}
 
-  /* ── Description grid ── */
   .desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:80px}
   .desc-title{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.95;margin-bottom:24px}
   .desc-title em{font-style:normal;color:var(--muted);font-size:0.65em}
@@ -89,27 +78,23 @@
   .stat-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
   .stat-value{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1}
 
-  /* ── Video ── */
   .video-section{margin-bottom:80px}
-  .video-label{font-size:12px;letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
+  .video-label{font-size:12px;letter-spacing:0.22em;color:var(--rb-yellow);text-transform:uppercase;
     display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:'JetBrains Mono',monospace}
   .video-label::before{content:"";width:36px;height:3px;border-radius:2px;
     background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
   .video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;
-    border-radius:18px;border:1px solid var(--line);
-    box-shadow:0 40px 100px rgba(10,120,30,0.25)}
+    border-radius:18px;border:1px solid var(--line);box-shadow:0 40px 100px rgba(245,197,24,0.12)}
   .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
-  /* ── CTA ── */
-  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:80px}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:80px;align-items:center}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;
     font-size:14px;font-weight:600;letter-spacing:0.04em;transition:all .2s;cursor:pointer;border:none}
-  .btn-green{background:linear-gradient(135deg,#1a7a30,#2ab64a);color:#fff}
-  .btn-green:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(30,160,50,0.4)}
+  .btn-cart{background:linear-gradient(135deg,#1A35C4,#386CFF);color:#fff;box-shadow:0 12px 40px rgba(26,53,196,0.4)}
+  .btn-cart:hover{transform:translateY(-2px)}
   .btn-ghost{background:transparent;color:#fff;border:1px solid var(--line)}
   .btn-ghost:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
 
-  /* ── Footer ── */
   footer{border-top:1px solid var(--line);padding:40px 48px}
   .foot-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
   .foot-meta{font-size:13px;color:var(--muted)}
@@ -126,7 +111,7 @@
   }
   @media(max-width:600px){
     .desc-title{font-size:44px}
-    .channel-logo-wrap img{height:52px}
+    .channel-logo-wrap img{height:44px}
   }
 </style>
 </head>
@@ -139,9 +124,9 @@
       <span class="logo-mark"></span>
       <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
     </a>
-    <div style="display:flex;align-items:center;gap:10px">
-      <a href="index.html#contacto" id="ch-cart-link" style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:8px 14px;border-radius:8px;border:1px solid var(--line);transition:color .2s,border-color .2s;text-decoration:none" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--line)'">
-        Solicitud&nbsp;<span id="ch-cart-count" style="min-width:20px;height:20px;border-radius:999px;background:#1A35C4;color:#fff;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 5px">0</span>
+    <div class="nav-right">
+      <a href="index.html#contacto" class="nav-cart-link" id="ch-cart-link">
+        Solicitud&nbsp;<span class="cart-badge" id="ch-cart-count">0</span>
       </a>
       <a href="index.html#canales" class="nav-back">Volver a canales</a>
     </div>
@@ -149,20 +134,18 @@
 </nav>
 <div class="rainbow-bar"></div>
 
-<!-- ── Hero ── -->
 <section class="channel-hero">
-  <img src="Imagenes/Planeta-Salvaje.jpg" alt="Planeta Salvaje" />
+  <img class="cover" src="Imagenes/Screenshot 2026-05-04 at 18.32.44.png" alt="AVI Kids" />
   <div class="overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Canal · 04 &nbsp;·&nbsp; Distribuido por Hype</div>
+    <div class="hero-eyebrow">Canal · 03 &nbsp;·&nbsp; Distribuido por Hype</div>
     <div class="channel-logo-wrap">
-      <img src="Imagenes/LOGO PLANETA SALVAJE (1).png" alt="Planeta Salvaje" />
+      <img src="assets/kids-logo.jpg" alt="AVI Kids" />
     </div>
-    <p class="channel-tagline">Una experiencia cinematográfica de naturaleza pura. Adrenalina visual 24/7.</p>
+    <p class="channel-tagline">El canal que hace soñar a los más pequeños. Animación, aventura y magia, todos los días.</p>
   </div>
 </section>
 
-<!-- ── Body ── -->
 <div class="channel-body">
 
   <div class="dist-badge">
@@ -170,18 +153,17 @@
     <span>Distribuido por <strong>Hype</strong> en toda Latinoamérica</span>
   </div>
 
-  <!-- Description -->
   <div class="desc-grid">
     <div>
-      <h2 class="desc-title">Poder.<br/>Inmersión.<br/><em>Naturaleza extrema.</em></h2>
-      <p class="desc-text">Planeta Salvaje es una señal de naturaleza premium diseñada para audiencias que buscan una experiencia cinematográfica real. Animales extremos, ecosistemas salvajes y comportamientos que desafían los límites de la supervivencia, con una imagen de calidad que lleva al espectador al corazón de la acción.</p>
-      <p class="desc-text">Cada bloque de programación es una inmersión total: fauna feroz, paisajes inhóspitos y momentos que generan adrenalina visual sin pausa. 24 horas al día, 7 días a la semana.</p>
+      <h2 class="desc-title">Sueños.<br/>Aventura.<br/><em>Magia para los pequeños.</em></h2>
+      <p class="desc-text">AVI Kids es la señal de animación y entretenimiento familiar de Hype, diseñada para los más pequeños de la casa. Una programación exclusiva de cine animado que combina diversión, valores y aventura en cada bloque del día.</p>
+      <p class="desc-text">Con contenido apto para toda la familia y clasificación adecuada para niños desde los 6 años, AVI Kids es el canal que los padres confían y los niños aman. 24 horas de magia, risas y aprendizaje.</p>
       <div class="ch-tags">
-        <span>Naturaleza</span>
-        <span>Fauna Extrema</span>
-        <span>Supervivencia</span>
-        <span>Adrenalina</span>
-        <span>Premium</span>
+        <span>Animación</span>
+        <span>Familiar</span>
+        <span>+6</span>
+        <span>Aventura</span>
+        <span>Educativo</span>
         <span>24/7</span>
       </div>
     </div>
@@ -192,7 +174,7 @@
       </div>
       <div class="stat-row">
         <span class="stat-label">Categoría</span>
-        <span class="stat-value">Naturaleza & Wildlife</span>
+        <span class="stat-value">Animación & Familia</span>
       </div>
       <div class="stat-row">
         <span class="stat-label">Distribuidor</span>
@@ -205,22 +187,20 @@
     </div>
   </div>
 
-  <!-- Video -->
   <div class="video-section">
     <div class="video-label">Video de presentación</div>
     <div class="video-wrap">
       <iframe
-        src="https://www.youtube-nocookie.com/embed/bh7nub10wS0?rel=0&modestbranding=1&color=white"
-        title="Planeta Salvaje — Reel de presentación"
+        src="https://www.youtube-nocookie.com/embed/cfbQ9SfIrPw?rel=0&modestbranding=1&color=white"
+        title="AVI Kids — Reel de presentación"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="cta-row">
-    <button id="cart-btn" class="btn btn-green" data-channel="planeta-salvaje" onclick="Cart.toggle('planeta-salvaje')" style="box-shadow:0 12px 40px rgba(30,160,50,0.4)">+ Agregar al carrito</button>
+    <button id="cart-btn" class="btn btn-cart" data-channel="kids" onclick="Cart.toggle('kids')">+ Agregar al carrito</button>
     <a href="index.html#contacto" class="btn btn-ghost">Solicitar distribución →</a>
     <a href="index.html#canales" class="btn btn-ghost">Ver todos los canales</a>
   </div>
@@ -235,9 +215,8 @@
     </div>
     <div class="foot-meta">© 2026 Hype Distribución · Latinoamérica</div>
     <div class="foot-links">
-      <a href="#">Aviso de privacidad</a>
-      <a href="#">Términos</a>
-      <a href="#">Prensa</a>
+      <a href="terminos.html">Términos y Condiciones</a>
+      <a href="index.html#contacto">Contacto</a>
     </div>
   </div>
 </footer>
