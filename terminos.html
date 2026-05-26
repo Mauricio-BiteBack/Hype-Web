@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Términos y Condiciones — Hype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08091A; --bg-2:#0A0B22; --primary:#1A35C4;
+    --rb-red:#E03131; --rb-orange:#F08C2C; --rb-yellow:#F5C518;
+    --rb-green:#2BB673; --rb-cyan:#22B8CF; --rb-magenta:#D6336C;
+    --line:rgba(138,156,197,0.18); --text:#FFFFFF; --muted:#8A9CC5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:0.01em;margin:0;line-height:0.95}
+
+  /* ── Film grain ── */
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.028;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size:200px 200px;}
+
+  /* ── Nav ── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 32px;height:68px;
+    display:flex;align-items:center;
+    background:rgba(8,9,26,0.85);backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1320px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:28px;height:28px;border-radius:6px;
+    background:linear-gradient(135deg,var(--rb-red),var(--rb-magenta),var(--rb-cyan));display:block;flex-shrink:0}
+  .hype-wordmark{height:22px;width:auto;display:block}
+  .nav-back{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    padding:8px 16px;border-radius:8px;border:1px solid var(--line);
+    transition:color .2s,border-color .2s}
+  .nav-back:hover{color:#fff;border-color:rgba(255,255,255,0.25)}
+  .nav-back::before{content:"←";font-size:15px}
+
+  /* ── Rainbow bar ── */
+  .rainbow-bar{height:4px;background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta));margin-top:68px}
+
+  /* ── Page header ── */
+  .page-header{
+    padding:80px 48px 64px;
+    background:
+      radial-gradient(900px 400px at 80% 0%, rgba(26,53,196,0.12), transparent 60%),
+      radial-gradient(700px 400px at 10% 100%, rgba(34,184,207,0.07), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .page-header-inner{max-width:860px;margin:0 auto}
+  .page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:0.22em;color:var(--rb-cyan);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .page-eyebrow::before{content:"";width:36px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,var(--rb-red),var(--rb-orange),var(--rb-yellow),var(--rb-green),var(--rb-cyan),var(--rb-magenta))}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:0.95;margin-bottom:20px}
+  .page-subtitle{color:var(--muted);font-size:15px;line-height:1.7}
+
+  /* ── Content ── */
+  .content{max-width:860px;margin:0 auto;padding:72px 48px 100px}
+
+  .tc-intro{
+    background:rgba(26,53,196,0.08);border:1px solid rgba(26,53,196,0.2);
+    border-radius:12px;padding:24px 28px;margin-bottom:56px;
+    font-size:15px;color:rgba(255,255,255,0.75);line-height:1.75
+  }
+
+  .tc-section{margin-bottom:48px}
+  .tc-section-title{
+    font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;
+    color:#fff;margin-bottom:14px;
+    display:flex;align-items:center;gap:12px
+  }
+  .tc-section-title::before{
+    content:"";display:block;width:4px;height:22px;border-radius:2px;flex-shrink:0;
+    background:linear-gradient(180deg,var(--rb-cyan),var(--rb-magenta))
+  }
+  .tc-section p{
+    color:rgba(255,255,255,0.70);font-size:15px;line-height:1.8;margin:0
+  }
+  .tc-section a{color:var(--rb-cyan);text-decoration:underline;text-underline-offset:3px}
+  .tc-section a:hover{color:#fff}
+
+  .tc-divider{border:none;border-top:1px solid var(--line);margin:0 0 48px}
+
+  /* ── Copyright ── */
+  .tc-copyright{
+    text-align:center;font-size:13px;color:var(--muted);
+    padding-top:40px;border-top:1px solid var(--line)
+  }
+
+  /* ── Footer ── */
+  footer{border-top:1px solid var(--line);padding:40px 48px}
+  .foot-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  .foot-meta{font-size:13px;color:var(--muted)}
+  .foot-links{display:flex;gap:24px}
+  .foot-links a{font-size:13px;color:var(--muted);transition:color .2s}
+  .foot-links a:hover{color:#fff}
+
+  @media(max-width:900px){
+    .page-header{padding:60px 24px 48px}
+    .content{padding:56px 24px 80px}
+    .page-title{font-size:52px}
+  }
+  @media(max-width:600px){
+    .page-title{font-size:40px}
+    footer{padding:32px 24px}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </a>
+    <a href="index.html" class="nav-back">Volver al inicio</a>
+  </div>
+</nav>
+<div class="rainbow-bar"></div>
+
+<!-- ── Page Header ── -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Legal · www.hypetv.live</div>
+    <h1 class="page-title">Términos y<br/>Condiciones</h1>
+    <p class="page-subtitle">Condiciones generales de utilización de los servicios ofrecidos en el Sitio.</p>
+  </div>
+</div>
+
+<!-- ── Content ── -->
+<div class="content">
+
+  <div class="tc-intro">
+    Bienvenidos a <strong>www.hypetv.live</strong> (el "Sitio") de Hype. A continuación se incluyen las condiciones generales de utilización de los servicios ofrecidos en el Sitio, que regirán los derechos y obligaciones entre los usuarios (los "Usuarios") y Hype. Al ingresar al Sitio, el Usuario declara conocer y aceptar las presentes Condiciones de Uso.
+  </div>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Naturaleza del Sitio</h2>
+    <p>El Sitio es una plataforma informativa sobre los servicios de distribución de canales de televisión de Hype en Latinoamérica. El contenido publicado tiene carácter exclusivamente informativo y no constituye una oferta comercial vinculante.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Usuarios</h2>
+    <p>Los servicios del Sitio están disponibles para personas con capacidad legal para contratar. El uso del Sitio por parte de menores de edad no está permitido sin supervisión de un adulto responsable.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Uso de los Servicios</h2>
+    <p>El Usuario se compromete a utilizar el Sitio exclusivamente con fines lícitos y de acuerdo con las presentes Condiciones de Uso. Queda prohibido cualquier uso del Sitio que pueda causar daños a Hype o a terceros.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Datos Personales</h2>
+    <p>Los datos personales que el Usuario proporcione a través del formulario de contacto (nombre, teléfono, correo electrónico, empresa) serán utilizados exclusivamente para responder consultas comerciales. Hype no compartirá esta información con terceros. El Usuario tiene derecho a solicitar la eliminación de sus datos en cualquier momento enviando un correo a <a href="mailto:hypetv.live29@gmail.com">hypetv.live29@gmail.com</a>. El tratamiento de datos personales se rige por la legislación vigente aplicable en materia de protección de datos personales.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Propiedad Intelectual</h2>
+    <p>Todos los contenidos del Sitio, incluyendo textos, imágenes, logos y diseños, son propiedad de Hype o de sus licenciantes y están protegidos por las leyes de propiedad intelectual aplicables. Queda prohibida su reproducción total o parcial sin autorización expresa de Hype.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Referencias a Terceros</h2>
+    <p>Las referencias en el Sitio a nombres, marcas o servicios de terceros se incluyen únicamente con fines informativos y no implican respaldo, patrocinio ni recomendación por parte de Hype.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Limitación de Responsabilidad</h2>
+    <p>Hype no garantiza la exactitud, completitud o actualidad de la información publicada en el Sitio. El uso del Sitio y de su contenido es responsabilidad exclusiva del Usuario. Hype no se hace responsable por decisiones tomadas en base al contenido del Sitio.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Seguridad</h2>
+    <p>Queda prohibido al Usuario intentar acceder a áreas restringidas del Sitio, interferir con su funcionamiento o realizar cualquier acción que pueda comprometer su seguridad o la de sus usuarios.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Modificaciones</h2>
+    <p>Hype se reserva el derecho de modificar las presentes Condiciones de Uso en cualquier momento. Las modificaciones entrarán en vigor desde su publicación en el Sitio.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Ley Aplicable</h2>
+    <p>Las presentes Condiciones de Uso se rigen por la legislación vigente en la República del Perú. Cualquier controversia será sometida a los tribunales competentes de la ciudad de Lima.</p>
+  </div>
+  <hr class="tc-divider"/>
+
+  <div class="tc-section">
+    <h2 class="tc-section-title">Contacto</h2>
+    <p>Para consultas sobre las presentes Condiciones de Uso puede contactarnos a través de <a href="mailto:hypetv.live29@gmail.com">hypetv.live29@gmail.com</a>.</p>
+  </div>
+
+  <div class="tc-copyright">Todos los derechos reservados &copy; 2025 Hype.</div>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="logo">
+      <span class="logo-mark"></span>
+      <img class="hype-wordmark" src="Imagenes/Hype logo-01.png" alt="Hype" />
+    </div>
+    <div class="foot-meta">© 2026 Hype Distribución · Latinoamérica</div>
+    <div class="foot-links">
+      <a href="terminos.html">Términos y Condiciones</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
