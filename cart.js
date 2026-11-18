@@ -4,10 +4,7 @@
   var CHANNELS = {
     'avi':             { name: 'AVI Channel',     category: 'Cine & Entretenimiento', color: '#386CFF' },
     'rewind':          { name: 'AVI Rewind',       category: 'Cine Clásico & Retro',  color: '#22B8CF' },
-    'kids':            { name: 'AVI Kids',         category: 'Animación & Familia',   color: '#F5C518' },
-    'planeta-salvaje': { name: 'Planeta Salvaje',  category: 'Naturaleza & Wildlife', color: '#2BB673' },
-    'comedy':          { name: 'Comedy Channel',   category: 'Comedia & Humor',       color: '#FFBE0B' },
-    'planeta-historia':{ name: 'Planeta Historia', category: 'Historia & Documentales',color: '#B4783C' }
+    'kids':            { name: 'AVI Kids',         category: 'Animación & Familia',   color: '#F5C518' }
   };
 
   function get() {
